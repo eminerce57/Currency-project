@@ -4,7 +4,7 @@ let button = document.getElementById("calCurrecy")
 
 
 
-request.post("http://api.exchangeratesapi.io/v1/latest?access_key=6e7e83d420e22bfa61f806470b037454").then(data => { // api url 
+request.get("http://api.exchangeratesapi.io/v1/latest?access_key=6e7e83d420e22bfa61f806470b037454").then(data => { // api url 
     selectGetList(data.rates)
 }).catch(error => console.log(error))
 
@@ -23,6 +23,24 @@ function changeCurrency() { // calculate euro and currency of your choice
     let euro = document.getElementById("kur_1").value
     let currenty_code_value = document.getElementById("code").value
 
+    if (!euro || !currenty_code_value) {
+
+        error("please fill all input", "danger")
+    }
+
+
+
     document.getElementById("ds_input").value = euro * currenty_code_value
+
+}
+
+
+
+function error(message, color) {
+    let alertArea = document.getElementById("alert-area")
+    alertArea.innerHTML = `
+    <div class="alert alert-${color}">${message}</div>
+    `
+    setTimeout(() => alertArea.innerHTML = "", 4000)
 
 }
