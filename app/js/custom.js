@@ -3,7 +3,7 @@ let currenty_code = document.getElementById("code")
 let button = document.getElementById("calCurrecy")
 
 
-request.get("http://api.exchangeratesapi.io/v1/latest?access_key=6e7e83d420e22bfa61f806470b037454").then(data => { // api url 
+request.get("http://api.exchangeratesapi.io/v1/latest?{ACCESS-KEY}").then(data => { // api url 
     selectGetList(data.rates)
 }).catch(error => console.log(error))
 
